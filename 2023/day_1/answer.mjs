@@ -15,13 +15,11 @@ function getInput() {
 
 function part1() {
   const input = getInput();
-  const digits = []
 
-  input.map(s => {
+  const digits = input.map(s => {
     const firstDigit = s.split("").find(v => !isNaN(Number(v)))
     const lastDigit = [...s].reverse().find(v => !isNaN(Number(v)))
-
-    digits.push(firstDigit + lastDigit)
+    return firstDigit + lastDigit
   })
 
   const res = digits.reduce((acc, cur) => {
@@ -56,9 +54,9 @@ const spelledToDigit = {
 function part2() {
   const input = getInput();
   const digits = []
+  const spelledKeys = Object.keys(spelledNums)
 
   input.forEach(str => {
-    const spelledKeys = Object.keys(spelledNums)
     let firstDigit
     let lastDigit
 
@@ -108,4 +106,6 @@ function part2() {
 }
 
 part1();
-part2();
+console.time("part2");
+part2(); // 8.399ms
+console.timeEnd("part2");
